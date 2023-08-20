@@ -1,6 +1,6 @@
 import './App.css'
 import { useEffect, useState } from 'react'
-import { CustomNumberInput } from './components'
+import { CustomNumberInput, ClearModal } from './components'
 import { Button } from '@mantine/core'
 
 interface ProgressDataItem {
@@ -16,7 +16,10 @@ function createRow({ day, items }: { day: number; items: number }) {
       <div
         key={i}
         className="block"
-        style={{ background: i <= items - 1 ? 'green' : 'transparent' }}
+        style={{
+          background: i <= items - 1 ? '#98D8AA' : 'transparent',
+          borderColor: i <= items - 1 ? 'transparent' : '#000',
+        }}
       ></div>
     )
   }
@@ -83,19 +86,25 @@ export const App = () => {
     <div className="App">
       <div
         className="row"
+        style={{ justifyContent: 'space-between', marginBottom: 10 }}
+      >
+        <h2>Minsgame Tracker</h2>
+        <a href="https://www.theminimalists.com/game/"> By the Minimalists</a>
+      </div>
+
+      <div
+        className="row"
         style={{
           gap: 10,
-          margin: '30px 0px 10px 0px',
+          margin: '0px 0px 20px 0px',
           justifyContent: 'space-between',
         }}
       >
-        <Button style={{ height: 45, background: 'red' }} onClick={clearData}>
-          Clear
-        </Button>
+        <ClearModal clearData={clearData} />
         <CustomNumberInput value={value} setValue={setValue} />
 
         <Button
-          style={{ height: 45 }}
+          style={{ height: 45, background: '#98D8AA' }}
           onClick={() =>
             updateProgress(progressData, setProgressData, value, setValue)
           }
