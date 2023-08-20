@@ -83,43 +83,74 @@ export const App = () => {
   }
 
   return (
-    <div className="App">
-      <div
-        className="row"
-        style={{ justifyContent: 'space-between', marginBottom: 10 }}
-      >
-        <h2>Minsgame Tracker</h2>
-        <a href="https://www.theminimalists.com/game/"> By the Minimalists</a>
-      </div>
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+      }}
+    >
+      <div className="App">
+        <div
+          className="row"
+          style={{ justifyContent: 'space-between', marginBottom: 10 }}
+        >
+          <h2>Minsgame Tracker</h2>
+          <a href="https://www.theminimalists.com/game/">#MinsGame</a>
+        </div>
 
+        <div
+          className="row"
+          style={{
+            gap: 10,
+            margin: '0px 0px 20px 0px',
+            justifyContent: 'space-between',
+          }}
+        >
+          <ClearModal clearData={clearData} />
+          <CustomNumberInput value={value} setValue={setValue} />
+
+          <Button
+            style={{ height: 40, background: '#98D8AA' }}
+            onClick={() =>
+              updateProgress(progressData, setProgressData, value, setValue)
+            }
+          >
+            Add
+          </Button>
+        </div>
+
+        <div className="pyramid">
+          {progressData.map((data) => (
+            <div key={data.day} className="rowWrapper">
+              <p className="dayText">Day: {data.day}</p>
+              {createRow(data)}
+            </div>
+          ))}
+        </div>
+      </div>
       <div
         className="row"
         style={{
-          gap: 10,
-          margin: '0px 0px 20px 0px',
-          justifyContent: 'space-between',
+          gap: 20,
+          bottom: 5,
+          justifyContent: 'center',
+          width: '100vw',
+          left: 0,
         }}
       >
-        <ClearModal clearData={clearData} />
-        <CustomNumberInput value={value} setValue={setValue} />
-
-        <Button
-          style={{ height: 45, background: '#98D8AA' }}
-          onClick={() =>
-            updateProgress(progressData, setProgressData, value, setValue)
-          }
+        <a
+          style={{ textDecoration: 'none', color: '#000' }}
+          href="https://anja-stricker.de/#/impressum"
         >
-          Add
-        </Button>
-      </div>
-
-      <div className="pyramid">
-        {progressData.map((data) => (
-          <div key={data.day} className="rowWrapper">
-            <p className="dayText">Day: {data.day}</p>
-            {createRow(data)}
-          </div>
-        ))}
+          Impressum
+        </a>
+        <a
+          style={{ textDecoration: 'none', color: '#000' }}
+          href="https://anja-stricker.de/#/datenschutz"
+        >
+          Datenschutz
+        </a>
       </div>
     </div>
   )

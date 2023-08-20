@@ -34,7 +34,7 @@ export function ClearModal({ clearData }: { clearData: any }) {
         </div>
       </Modal>
 
-      <Button style={{ height: 45, background: '#FF6D60' }} onClick={open}>
+      <Button style={{ height: 40, background: '#FF6D60' }} onClick={open}>
         Clear
       </Button>
     </>

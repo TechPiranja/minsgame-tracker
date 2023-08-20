@@ -19,7 +19,7 @@ export const CustomNumberInput = ({
   return (
     <Group spacing={10}>
       <ActionIcon
-        size={45}
+        size={40}
         variant="default"
         onClick={() => handlers.current?.decrement()}
       >
@@ -34,11 +34,11 @@ export const CustomNumberInput = ({
         max={470}
         min={0}
         step={1}
-        styles={{ input: { width: rem(48), textAlign: 'center', height: 45 } }}
+        styles={{ input: { width: rem(48), textAlign: 'center', height: 40 } }}
       />
 
       <ActionIcon
-        size={45}
+        size={40}
         variant="default"
         onClick={() => handlers.current?.increment()}
       >
